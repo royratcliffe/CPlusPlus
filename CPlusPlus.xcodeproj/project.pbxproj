@@ -7,11 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		78411E9911479C5800FDE45D /* CPlusPlus.h in Headers */ = {isa = PBXBuildFile; fileRef = 78411E9811479C5800FDE45D /* CPlusPlus.h */; };
+		78411E9C11479CB100FDE45D /* c_plus_plus_retained.h in Headers */ = {isa = PBXBuildFile; fileRef = 78411E9A11479CB100FDE45D /* c_plus_plus_retained.h */; };
+		78411E9D11479CB100FDE45D /* c_plus_plus_retained.mm in Sources */ = {isa = PBXBuildFile; fileRef = 78411E9B11479CB100FDE45D /* c_plus_plus_retained.mm */; };
+		78411EA211479E1C00FDE45D /* CPlusPlusRetainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 78411EA011479E1C00FDE45D /* CPlusPlusRetainer.h */; };
+		78411EA311479E1C00FDE45D /* CPlusPlusRetainer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 78411EA111479E1C00FDE45D /* CPlusPlusRetainer.mm */; };
 		AA747D9F0F9514B9006C5449 /* CPlusPlus_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* CPlusPlus_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		78411E9811479C5800FDE45D /* CPlusPlus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPlusPlus.h; sourceTree = "<group>"; };
+		78411E9A11479CB100FDE45D /* c_plus_plus_retained.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = c_plus_plus_retained.h; sourceTree = "<group>"; };
+		78411E9B11479CB100FDE45D /* c_plus_plus_retained.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = c_plus_plus_retained.mm; sourceTree = "<group>"; };
+		78411EA011479E1C00FDE45D /* CPlusPlusRetainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPlusPlusRetainer.h; sourceTree = "<group>"; };
+		78411EA111479E1C00FDE45D /* CPlusPlusRetainer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CPlusPlusRetainer.mm; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* CPlusPlus_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPlusPlus_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libCPlusPlus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCPlusPlus.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,6 +69,10 @@
 		08FB77AEFE84172EC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				78411E9A11479CB100FDE45D /* c_plus_plus_retained.h */,
+				78411E9B11479CB100FDE45D /* c_plus_plus_retained.mm */,
+				78411EA011479E1C00FDE45D /* CPlusPlusRetainer.h */,
+				78411EA111479E1C00FDE45D /* CPlusPlusRetainer.mm */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -67,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				AA747D9E0F9514B9006C5449 /* CPlusPlus_Prefix.pch */,
+				78411E9811479C5800FDE45D /* CPlusPlus.h */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -79,6 +94,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA747D9F0F9514B9006C5449 /* CPlusPlus_Prefix.pch in Headers */,
+				78411E9911479C5800FDE45D /* CPlusPlus.h in Headers */,
+				78411E9C11479CB100FDE45D /* c_plus_plus_retained.h in Headers */,
+				78411EA211479E1C00FDE45D /* CPlusPlusRetainer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +143,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78411E9D11479CB100FDE45D /* c_plus_plus_retained.mm in Sources */,
+				78411EA311479E1C00FDE45D /* CPlusPlusRetainer.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
