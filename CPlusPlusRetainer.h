@@ -32,4 +32,6 @@
 
 - (id)initWithRetained:(struct c_plus_plus_retained *)aRetainedObject;
 
+- (struct c_plus_plus_retained *)retained;
+
 @end

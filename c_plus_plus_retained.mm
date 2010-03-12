@@ -26,7 +26,7 @@
 #import "c_plus_plus_retained.h"
 #import "CPlusPlusRetainer.h"
 
-void c_plus_plus_retained::retain()
+c_plus_plus_retained &c_plus_plus_retained::retain()
 {
 	if (retainer_object)
 	{
@@ -35,8 +35,14 @@ void c_plus_plus_retained::retain()
 	else
 	{
 		retainer_object = [[CPlusPlusRetainer alloc] initWithRetained:this];
-		// Hereafter you must never delete this object. Doing so will break the implicit design contract. Asking to retain actually places the retained object within the scope of retain-release memory management. Only releasing hereafter will release the retainer and delete the object. Henceforward, delete becomes release. Calling delete will double-delete this object.
+		// Hereafter you must never delete this object. Doing so will break the
+		// implicit design contract. Asking to retain actually places the
+		// retained object within the scope of retain-release memory
+		// management. Only releasing hereafter will release the retainer and
+		// delete the object. Henceforward, delete becomes release. Calling
+		// delete will double-delete this object.
 	}
+	return *this;
 }
 
 void c_plus_plus_retained::release()
@@ -47,10 +53,16 @@ void c_plus_plus_retained::release()
 	}
 }
 
-void c_plus_plus_retained::autorelease()
+c_plus_plus_retained &c_plus_plus_retained::autorelease()
 {
 	if (retainer_object)
 	{
 		[(CPlusPlusRetainer *)retainer_object autorelease];
 	}
+	return *this;
+}
+
+void *c_plus_plus_retained::retainer()
+{
+	return retainer_object;
 }

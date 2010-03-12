@@ -43,4 +43,6 @@
 	[super dealloc];
 }
 
+- (struct c_plus_plus_retained *)retained;
+
 @end

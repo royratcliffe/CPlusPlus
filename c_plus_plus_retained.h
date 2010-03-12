@@ -23,21 +23,53 @@
 //
 //------------------------------------------------------------------------------
 
-// Defines the public interface. Any general C++ translation unit sees this interface declaration. It contains nothing about Objective-C or Objective-C++. Such dependencies appear at link- and run-time, not at compile-time. This is by design. You can include this header in any C++ source.
+// Defines the public interface. Any general C++ translation unit sees this
+// interface declaration. It contains nothing about Objective-C or
+// Objective-C++. Such dependencies appear at link- and run-time, not at
+// compile-time. This is by design. You can include this header in any C++
+// source.
 //
-// Semantically, the c_plus_plus_retained class is no retain count. It remains initially invisible respecting retain-release memory management. This changes when you retain it for the first time. At that point, you no longer delete the object. You must release it, doing so manually or by auto-releasing.
+// Semantically, the c_plus_plus_retained class is no retain count. It remains
+// initially invisible respecting retain-release memory management. This changes
+// when you retain it for the first time. At that point, you no longer delete
+// the object. You must release it, doing so manually or by auto-releasing.
 //
-// Note, the struct cannot belong to a name space. Structs are classes. The difference is only one: the initial visibility; public for struct, private for class.
+// Note, the struct cannot belong to a name space. Structs are classes. The
+// difference is only one: the initial visibility; public for struct, private
+// for class.
+//
+// Beware the C++ copy constructor! By default the compiler supplies a bitwise
+// copy that copies everything verbatim. If you create a copy however, the
+// duplicate has no retainer. If you want duplicates to retain then invoke
+// retain(). If you want duplicates to auto-release invoke
+// retained->retain().autorelease() assuming "retained" is a pointer to
+// c_plus_plus_retained or its sub-class.
 struct c_plus_plus_retained
 {
 	c_plus_plus_retained() : retainer_object(0) {}
+	c_plus_plus_retained(const c_plus_plus_retained &copy) : retainer_object(0) {}
 	virtual ~c_plus_plus_retained() {}
-	void retain();
+	
+	c_plus_plus_retained &retain();
+	
 	void release();
-	// Releasing has no effect until you retain it.
-	void autorelease();
+		// Releasing has no effect until you retain it.
+		// Without retaining first, the release remains a no-operation.
+	
+	c_plus_plus_retained &autorelease();
+	
+	void *retainer();
 	
 private:
-	// Why void pointer? Why not CPlusPlusRetainer pointer? The design aims to clearly separate C++ from Objective-C++. The two halves of this equation should never meet except within the implementation, never within the interface. Simple reason, the header becomes included by standard C++ translation units. Includers do not want to convert C++ sources to Objective-C++ sources, cpp to mm. That would be an unnecessary burden. Nor would developers want to deal with compiling as Objective-C++ despite the standard extension. Too messy. Better to keep the implementation separate. Hence, only the linking phase has Objective-C++ dependency. Compiling remains agnostic.
+	// Why void pointer? Why not CPlusPlusRetainer pointer? The design aims to
+	// clearly separate C++ from Objective-C++. The two halves of this equation
+	// should never meet except within the implementation, never within the
+	// interface. Simple reason, the header becomes included by standard C++
+	// translation units. Includers do not want to convert C++ sources to
+	// Objective-C++ sources, cpp to mm. That would be an unnecessary
+	// burden. Nor would developers want to deal with compiling as Objective-C++
+	// despite the standard extension. Too messy. Better to keep the
+	// implementation separate. Hence, only the linking phase has Objective-C++
+	// dependency. Compiling remains agnostic.
 	void *retainer_object;
 };
