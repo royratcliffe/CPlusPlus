@@ -24,11 +24,11 @@
 //------------------------------------------------------------------------------
 
 // This header defines the pure C++ public interface; notice there are no
-// includes hence no other dependencies. Any general C++ translation unit sees
-// this interface declaration. It contains nothing about Objective-C or
-// Objective-C++. Such dependencies appear at link- and run-time, not at
-// compile-time. This is by design. You can include this header in any C++
-// source.
+// includes hence no other dependencies. Any general C++ translation unit can
+// see this interface declaration without baulking. It contains nothing about
+// Objective-C or Objective-C++. Such dependencies appear at link- and run-time,
+// not at compile-time. This is by design. You can include this header in any
+// C++ source.
 //
 // Semantically, the c_plus_plus_retained class is no retain count. It remains
 // initially invisible respecting retain-release memory management. This changes
@@ -60,6 +60,13 @@ struct c_plus_plus_retained
 	c_plus_plus_retained &autorelease();
 	
 	void *retainer();
+		// Answers the Objective-C retainer object. You can access the retainer
+		// if you want in order to add the retained C++ object to a collection
+		// such as an array. You cannot add C++ instances directly to
+		// NSArray. But adding the retainer instead retains the C++ object
+		// indirectly. Answers a void pointer to avoid polluting C++ namespace
+		// with Objective-C artefacts. Cast the answer to "id" type under
+		// Objective-C.
 	
 private:
 	// Why void pointer? Why not CPlusPlusRetainer pointer? The design aims to

@@ -64,5 +64,9 @@ c_plus_plus_retained &c_plus_plus_retained::autorelease()
 
 void *c_plus_plus_retained::retainer()
 {
+	if (retainer_object == 0)
+	{
+		retain().autorelease();
+	}
 	return retainer_object;
 }
