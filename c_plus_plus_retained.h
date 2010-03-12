@@ -30,10 +30,11 @@
 // not at compile-time. This is by design. You can include this header in any
 // C++ source.
 //
-// Semantically, the c_plus_plus_retained class is no retain count. It remains
-// initially invisible respecting retain-release memory management. This changes
-// when you retain it for the first time. At that point, you no longer delete
-// the object. You must release it, doing so manually or by auto-releasing.
+// Semantically, the c_plus_plus_retained class initially has no retain
+// count. It remains initially invisible respecting retain-release memory
+// management. This changes when you retain it for the first time. At that
+// point, you no longer delete the object. You must release it, doing so
+// manually or by auto-releasing.
 //
 // Note, the struct cannot belong to a name space. Structs are classes. The
 // difference is only one: the initial visibility; public for struct, private
