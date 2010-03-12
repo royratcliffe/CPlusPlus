@@ -43,6 +43,9 @@
 	[super dealloc];
 }
 
-- (struct c_plus_plus_retained *)retained;
+- (struct c_plus_plus_retained *)retained
+{
+	return retainedObject;
+}
 
 @end

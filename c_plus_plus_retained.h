@@ -23,8 +23,9 @@
 //
 //------------------------------------------------------------------------------
 
-// Defines the public interface. Any general C++ translation unit sees this
-// interface declaration. It contains nothing about Objective-C or
+// This header defines the pure C++ public interface; notice there are no
+// includes hence no other dependencies. Any general C++ translation unit sees
+// this interface declaration. It contains nothing about Objective-C or
 // Objective-C++. Such dependencies appear at link- and run-time, not at
 // compile-time. This is by design. You can include this header in any C++
 // source.
