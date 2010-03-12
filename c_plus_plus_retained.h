@@ -36,9 +36,20 @@
 // point, you no longer delete the object. You must release it, doing so
 // manually or by auto-releasing.
 //
-// Note, the struct cannot belong to a name space. Structs are classes. The
-// difference is only one: the initial visibility; public for struct, private
-// for class.
+// Use struct rather than class keyword. Do not use namespaces. This header will
+// appear in several different contexts: C++ contexts when included by
+// sub-classes deriving from c_plus_plus_retained; Objective-C++ when
+// implementing the retained-retainer pairing. Compiling contexts may also
+// include standard Objective-C. Hence for these competing constraints, choose
+// the most common denominators: no namespace and no class keywords. Under C++,
+// struct equals class. The difference is only one: the initial visibility;
+// public for struct, private for class.
+//
+// Note styling differences. The retained-retainer pairing uses different name
+// stylings for Objective-C and C++ naming, i.e. camel case and underscores
+// respectively. The motivation: to draw a distinct line between Objective and
+// non-Objective worlds. The C++ interface styling echoes standard STL names,
+// while the Objective world echoes NextStep.
 //
 // Beware the C++ copy constructor! By default the compiler supplies a bitwise
 // copy that copies everything verbatim. If you create a copy however, the
